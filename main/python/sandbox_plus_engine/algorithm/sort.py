@@ -1,43 +1,43 @@
 # Copyright (c)2020 BugMaker-Project
-# A Script for sorting.
+# array Script for sorting.
 from numpy.random import randint
-def InsertSort(arr):
-    for i in range(1, len(arr)):
-        current = arr[i]
+def InsertSort(array):
+    for i in range(1, len(array)):
+        current = array[i]
         pre_index = i - 1
-        while pre_index >= 0 and arr[pre_index] > current:
-            arr[pre_index + 1] = arr[pre_index]
+        while pre_index >= 0 and array[pre_index] > current:
+            array[pre_index + 1] = array[pre_index]
             pre_index -= 1
-        arr[pre_index + 1] = current
-    return arr
-def SelectSort(arr):
-    for i in range(len(arr) - 1):
+        array[pre_index + 1] = current
+    return array
+def SelectSort(array):
+    for i in range(len(array) - 1):
         min_index = i
-        for j in range(i + 1, len(arr)):
-            if arr[j] < arr[min_index]:
+        for j in range(i + 1, len(array)):
+            if array[j] < array[min_index]:
                 min_index = j
-        arr[min_index], arr[i] = arr[i], arr[min_index]
-    return arr
-def BubbleSort(arr):
-    for i in range(len(arr) - 1):
-        for j in range(len(arr) - 1 - i):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-    return arr
-def QuickSort(arr):
-  if len(arr) < 2:
-    return arr
+        array[min_index], array[i] = array[i], array[min_index]
+    return array
+def BubbleSort(array):
+    for i in range(len(array) - 1):
+        for j in range(len(array) - 1 - i):
+            if array[j] > array[j + 1]:
+                array[j], array[j + 1] = array[j + 1], array[j]
+    return array
+def QuickSort(array):
+  if len(array) < 2:
+    return array
   else:
-    pivot = arr[0]
-    less = [i for i in arr[1:] if i <= pivot]
-    greater = [i for i in arr[1:] if i > pivot]
+    pivot = array[0]
+    less = [i for i in array[1:] if i <= pivot]
+    greater = [i for i in array[1:] if i > pivot]
     return QuickSort(less) + [pivot] + QuickSort(greater)
-def MergeSort(arr):
-    if len(arr) == 1:
-        return arr
-    mid = len(arr) // 2
-    left = arr[:mid]
-    right = arr[mid:]
+def MergeSort(array):
+    if len(array) == 1:
+        return array
+    mid = len(array) // 2
+    left = array[:mid]
+    right = array[mid:]
     return __marge(MergeSort(left), MergeSort(right))
 def __marge(left, right):
     result = []
@@ -49,36 +49,36 @@ def __marge(left, right):
     result += left
     result += right
     return result
-def ShellSort(arr):
-    gap = len(arr) // 2
+def ShellSort(array):
+    gap = len(array) // 2
     while gap > 0:
-        for i in range(gap, len(arr)):
+        for i in range(gap, len(array)):
             j = i
-            current = arr[i]
-            while j - gap >= 0 and current < arr[j - gap]:
-                arr[j] = arr[j - gap]
+            current = array[i]
+            while j - gap >= 0 and current < array[j - gap]:
+                array[j] = array[j - gap]
                 j -= gap
-            arr[j] = current
+            array[j] = current
         gap //= 2
-    return arr
-def RadixSort(arr,d):
+    return array
+def RadixSort(array,d):
     for k in range(d):
         s=[[] for i in range(10)]
-        for i in arr:
+        for i in array:
             s[i//(10**k)%10].append(i)
-        arr=[j for i in s for j in i]
-    return arr
-def ConutingSort(A):
-    k = max(A)
+        array=[j for i in s for j in i]
+    return array
+def ConutingSort(array):
+    k = max(array)
     C = [0]*(k+1)
-    B = (len(A))*[0]
-    for i in range(0, len(A)):
-        C[A[i]] += 1
+    B = (len(array))*[0]
+    for i in range(0, len(array)):
+        C[array[i]] += 1
     for i in range(1, k+1):
         C[i] += C[i-1]
-    for i in range(len(A)-1, -1, -1):
-        B[C[A[i]]-1] = A[i]
-        C[A[i]] -= 1
+    for i in range(len(array)-1, -1, -1):
+        B[C[array[i]]-1] = array[i]
+        C[array[i]] -= 1
     return B
 #桶排序
 def bucket_sort(the_list):
