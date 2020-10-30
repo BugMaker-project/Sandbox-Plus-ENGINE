@@ -5,3 +5,4 @@ from .algorithm.search import *
 from .algorithm.binary_search_tree import *
 from .algorithm.hash_table import *
 from .game_develop.simple_game.player import Player
+from .game_develop.simple_game.enemy import Enemy
